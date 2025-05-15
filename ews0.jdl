@@ -1,0 +1,43 @@
+
+entity Spas {
+	namaSpas String
+    namaManufaktur String
+    tipeSpas Integer
+}
+
+entity SpasArrInstall {
+	namaInstalasi String
+    latInstalasi Double
+    longInstalasi Double
+    thresholdInstalasi Double
+}
+
+entity SpasArrLog {
+	timeLog ZonedDateTime
+    timeRetrieve ZonedDateTime
+    logValue String
+}
+
+
+relationship ManyToOne {
+	SpasArrInstall{spas} to Spas{install}
+}
+
+relationship OneToMany {
+	SpasArrInstall{log} to SpasArrLog
+}
+
+
+// Set pagination options
+paginate Spas, SpasArrInstall with pagination
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+
+filter *
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

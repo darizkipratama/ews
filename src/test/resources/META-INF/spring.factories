@@ -1,0 +1,3 @@
+org.springframework.test.context.ContextCustomizerFactory = \
+    com.sipdasrh.ews.config.SqlTestContainersSpringContextCustomizerFactory,com.\
+    sipdasrh.ews.config.RedisTestContainersSpringContextCustomizerFactory

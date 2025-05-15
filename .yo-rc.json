@@ -1,0 +1,33 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "ews",
+    "buildTool": "maven",
+    "cacheProvider": "redis",
+    "clientFramework": "no",
+    "clientTestFrameworks": null,
+    "clientTheme": null,
+    "creationTimestamp": 1747299984109,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "enableHibernateCache": true,
+    "enableTranslation": false,
+    "entities": [],
+    "feignClient": null,
+    "jhipsterVersion": "8.11.0",
+    "jwtSecretKey": "MjM5ZTIwNjY0YTY0YjAwODIzYmJlZjc5YjUzNTlmOTU5ZjMzOTViMzdlOWQ0ODljMzliZDZlZGIyMzlmZTQ3ZTA3ODlhMmQ5M2RhZGFmNTk3YmUyMjczNDA2MTQzMDFhNWM0YjBhZjA1ZjM1ZmYzZGVjNmY5ZDVhZDY3ZTM4NDQ=",
+    "microfrontend": null,
+    "microfrontends": [],
+    "nativeLanguage": "en",
+    "packageName": "com.sipdasrh.ews",
+    "prodDatabaseType": "postgresql",
+    "reactive": false,
+    "serverPort": null,
+    "serviceDiscoveryType": null,
+    "skipClient": true,
+    "syncUserWithIdp": null,
+    "testFrameworks": [],
+    "withAdminUi": null
+  }
+}
