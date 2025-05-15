@@ -1,0 +1,49 @@
+{
+  "annotations": {
+    "changelogDate": "20250515090922"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "namaInstalasi",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "urlInstalasi",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "latInstalasi",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "longInstalasi",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "thresholdInstalasi",
+      "fieldType": "Double"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "SpasArrInstall",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "spasArrLog",
+      "relationshipName": "log",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "spas",
+      "otherEntityRelationshipName": "install",
+      "relationshipName": "spas",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

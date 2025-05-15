@@ -1,0 +1,26 @@
+{
+  "annotations": {
+    "changelogDate": "20250515090923"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "timeLog",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "timeRetrieve",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "logValue",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "SpasArrLog",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

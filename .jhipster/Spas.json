@@ -1,0 +1,35 @@
+{
+  "annotations": {
+    "changelogDate": "20250515090921"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "namaSpas",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "namaManufaktur",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tipeSpas",
+      "fieldType": "Integer"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Spas",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "spasArrInstall",
+      "otherEntityRelationshipName": "spas",
+      "relationshipName": "install",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -83,6 +83,11 @@ public class CacheConfiguration {
             createCache(cm, com.sipdasrh.ews.domain.User.class.getName(), jcacheConfiguration);
             createCache(cm, com.sipdasrh.ews.domain.Authority.class.getName(), jcacheConfiguration);
             createCache(cm, com.sipdasrh.ews.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            createCache(cm, com.sipdasrh.ews.domain.Spas.class.getName(), jcacheConfiguration);
+            createCache(cm, com.sipdasrh.ews.domain.Spas.class.getName() + ".installs", jcacheConfiguration);
+            createCache(cm, com.sipdasrh.ews.domain.SpasArrInstall.class.getName(), jcacheConfiguration);
+            createCache(cm, com.sipdasrh.ews.domain.SpasArrInstall.class.getName() + ".logs", jcacheConfiguration);
+            createCache(cm, com.sipdasrh.ews.domain.SpasArrLog.class.getName(), jcacheConfiguration);
             // jhipster-needle-redis-add-entry
         };
     }

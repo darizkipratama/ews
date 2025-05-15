@@ -7,6 +7,7 @@ entity Spas {
 
 entity SpasArrInstall {
 	namaInstalasi String
+  urlInstalasi String
     latInstalasi Double
     longInstalasi Double
     thresholdInstalasi Double
@@ -35,7 +36,7 @@ paginate Spas, SpasArrInstall with pagination
 dto * with mapstruct
 
 // Set service options to all except few
-service all with serviceImpl 
+service all with serviceImpl
 
 filter *
 
