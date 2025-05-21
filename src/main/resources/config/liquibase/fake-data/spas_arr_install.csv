@@ -1,11 +1,3 @@
-id;nama_instalasi;url_instalasi;lat_instalasi;long_instalasi;threshold_instalasi
-1;humiliating feather;curse;21460.12;29119.22;27869.98
-2;untrue;duh;2578.13;11554.13;29268.67
-3;jellyfish now after;indeed ugh;9347.82;29337.65;13179.72
-4;knowledgeably;incline scented;4060.62;20598.41;12603.11
-5;broadside arrange;trench briefly athwart;13328.55;24320.02;16805.87
-6;swiftly;neatly waver;11554.47;13043.34;29981.79
-7;blond upwardly who;even drat;15282.53;15319.32;5052.03
-8;yum;selfishly aha synergy;32626.33;9432.22;14975.5
-9;at whisper till;onto;31415.35;30014.05;14977.62
-10;unwilling;whether;28620.49;6143.41;12666.71
+id;nama_instalasi;url_instalasi;lat_instalasi;long_instalasi;threshold_instalasi;spas_id
+1;LOGGER 4126 ;https://tatonas.co.id/api/v2/realtime?uc=Se0q6pbR_all_bpdas_v2&pc=039&hw=4126;-6.6939;106.96841;50;1
+
