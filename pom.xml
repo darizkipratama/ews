@@ -801,12 +801,18 @@
             </activation>
             <properties>
                 <!-- default Spring profiles -->
-                <liquibase-plugin.driver>org.h2.Driver</liquibase-plugin.driver>
-                <liquibase-plugin.hibernate-dialect>org.hibernate.dialect.H2Dialect</liquibase-plugin.hibernate-dialect>
+<!--                <liquibase-plugin.driver>org.h2.Driver</liquibase-plugin.driver>-->
+<!--                <liquibase-plugin.hibernate-dialect>org.hibernate.dialect.H2Dialect</liquibase-plugin.hibernate-dialect>-->
+<!--                <liquibase-plugin.password/>-->
+<!--                <liquibase-plugin.url>jdbc:h2:file:${project.build.directory}/h2db/db/ews</liquibase-plugin.url>-->
+<!--                <liquibase-plugin.username>ews</liquibase-plugin.username>-->
+<!--                <profile.test>test,testdev</profile.test>-->
+                <liquibase-plugin.driver>org.postgresql.Driver</liquibase-plugin.driver>
+                <liquibase-plugin.hibernate-dialect>org.hibernate.dialect.PostgreSQLDialect</liquibase-plugin.hibernate-dialect>
                 <liquibase-plugin.password/>
-                <liquibase-plugin.url>jdbc:h2:file:${project.build.directory}/h2db/db/ews</liquibase-plugin.url>
+                <liquibase-plugin.url>jdbc:postgresql://localhost:5432/ews</liquibase-plugin.url>
                 <liquibase-plugin.username>ews</liquibase-plugin.username>
-                <profile.test>test,testdev</profile.test>
+                <profile.test>test,devprod</profile.test>
                 <spring.profiles.active>dev${profile.tls}${profile.no-liquibase}</spring.profiles.active>
             </properties>
             <dependencies>
@@ -815,10 +821,10 @@
                     <artifactId>spring-boot-devtools</artifactId>
                     <optional>true</optional>
                 </dependency>
-                <dependency>
-                    <groupId>com.h2database</groupId>
-                    <artifactId>h2</artifactId>
-                </dependency>
+              <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+              </dependency>
             </dependencies>
             <build>
                 <plugins>

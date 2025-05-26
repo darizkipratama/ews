@@ -7,7 +7,7 @@ services:
       service: postgresql
     profiles:
       - ''
-      - prod
+      - dev
   redis:
     extends:
       file: ./redis.yml

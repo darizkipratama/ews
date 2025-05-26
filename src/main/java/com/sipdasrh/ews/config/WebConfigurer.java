@@ -41,7 +41,7 @@ public class WebConfigurer implements ServletContextInitializer {
         }
 
         if (h2ConsoleIsEnabled(env)) {
-            initH2Console(servletContext);
+            //            initH2Console(servletContext);
         }
         LOG.info("Web application fully configured");
     }

@@ -58,6 +58,7 @@
             <column name="lat_instalasi" type="numeric"/>
             <column name="long_instalasi" type="numeric"/>
             <column name="threshold_instalasi" type="numeric"/>
+            <column name="spas_id" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>
