@@ -3,6 +3,7 @@ package com.sipdasrh.ews.web.rest;
 import com.sipdasrh.ews.repository.SpasArrLogRepository;
 import com.sipdasrh.ews.service.SpasArrLogQueryService;
 import com.sipdasrh.ews.service.SpasArrLogService;
+import com.sipdasrh.ews.service.SpasSensorService;
 import com.sipdasrh.ews.service.criteria.SpasArrLogCriteria;
 import com.sipdasrh.ews.service.dto.SpasArrLogDTO;
 import com.sipdasrh.ews.web.rest.errors.BadRequestAlertException;
@@ -39,14 +40,18 @@ public class SpasArrLogResource {
 
     private final SpasArrLogQueryService spasArrLogQueryService;
 
+    private final SpasSensorService spasSensorService;
+
     public SpasArrLogResource(
         SpasArrLogService spasArrLogService,
         SpasArrLogRepository spasArrLogRepository,
-        SpasArrLogQueryService spasArrLogQueryService
+        SpasArrLogQueryService spasArrLogQueryService,
+        SpasSensorService spasSensorService
     ) {
         this.spasArrLogService = spasArrLogService;
         this.spasArrLogRepository = spasArrLogRepository;
         this.spasArrLogQueryService = spasArrLogQueryService;
+        this.spasSensorService = spasSensorService;
     }
 
     /**
@@ -189,5 +194,13 @@ public class SpasArrLogResource {
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString()))
             .build();
+    }
+
+    @GetMapping("/get-sensor")
+    public ResponseEntity<String> getSensorData() {
+        LOG.debug("REST request to get Sensor Data: {}");
+
+        spasSensorService.getDataFromSensors();
+        return ResponseEntity.ok("OKAY");
     }
 }
