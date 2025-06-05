@@ -81,6 +81,7 @@ class SpasArrInstallCriteriaTest {
         spasArrInstallCriteria.latInstalasi();
         spasArrInstallCriteria.longInstalasi();
         spasArrInstallCriteria.thresholdInstalasi();
+        spasArrInstallCriteria.urlEwsGis();
         spasArrInstallCriteria.logId();
         spasArrInstallCriteria.spasId();
         spasArrInstallCriteria.distinct();
@@ -95,6 +96,7 @@ class SpasArrInstallCriteriaTest {
                 condition.apply(criteria.getLatInstalasi()) &&
                 condition.apply(criteria.getLongInstalasi()) &&
                 condition.apply(criteria.getThresholdInstalasi()) &&
+                condition.apply(criteria.getUrlEwsGis()) &&
                 condition.apply(criteria.getLogId()) &&
                 condition.apply(criteria.getSpasId()) &&
                 condition.apply(criteria.getDistinct()),
@@ -114,6 +116,7 @@ class SpasArrInstallCriteriaTest {
                 condition.apply(criteria.getLatInstalasi(), copy.getLatInstalasi()) &&
                 condition.apply(criteria.getLongInstalasi(), copy.getLongInstalasi()) &&
                 condition.apply(criteria.getThresholdInstalasi(), copy.getThresholdInstalasi()) &&
+                condition.apply(criteria.getUrlEwsGis(), copy.getUrlEwsGis()) &&
                 condition.apply(criteria.getLogId(), copy.getLogId()) &&
                 condition.apply(criteria.getSpasId(), copy.getSpasId()) &&
                 condition.apply(criteria.getDistinct(), copy.getDistinct()),

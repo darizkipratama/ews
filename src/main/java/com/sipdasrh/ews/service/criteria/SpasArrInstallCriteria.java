@@ -34,6 +34,8 @@ public class SpasArrInstallCriteria implements Serializable, Criteria {
 
     private DoubleFilter thresholdInstalasi;
 
+    private StringFilter urlEwsGis;
+
     private LongFilter logId;
 
     private LongFilter spasId;
@@ -49,6 +51,7 @@ public class SpasArrInstallCriteria implements Serializable, Criteria {
         this.latInstalasi = other.optionalLatInstalasi().map(DoubleFilter::copy).orElse(null);
         this.longInstalasi = other.optionalLongInstalasi().map(DoubleFilter::copy).orElse(null);
         this.thresholdInstalasi = other.optionalThresholdInstalasi().map(DoubleFilter::copy).orElse(null);
+        this.urlEwsGis = other.optionalUrlEwsGis().map(StringFilter::copy).orElse(null);
         this.logId = other.optionalLogId().map(LongFilter::copy).orElse(null);
         this.spasId = other.optionalSpasId().map(LongFilter::copy).orElse(null);
         this.distinct = other.distinct;
@@ -173,6 +176,25 @@ public class SpasArrInstallCriteria implements Serializable, Criteria {
         this.thresholdInstalasi = thresholdInstalasi;
     }
 
+    public StringFilter getUrlEwsGis() {
+        return urlEwsGis;
+    }
+
+    public Optional<StringFilter> optionalUrlEwsGis() {
+        return Optional.ofNullable(urlEwsGis);
+    }
+
+    public StringFilter urlEwsGis() {
+        if (urlEwsGis == null) {
+            setUrlEwsGis(new StringFilter());
+        }
+        return urlEwsGis;
+    }
+
+    public void setUrlEwsGis(StringFilter urlEwsGis) {
+        this.urlEwsGis = urlEwsGis;
+    }
+
     public LongFilter getLogId() {
         return logId;
     }
@@ -246,6 +268,7 @@ public class SpasArrInstallCriteria implements Serializable, Criteria {
             Objects.equals(latInstalasi, that.latInstalasi) &&
             Objects.equals(longInstalasi, that.longInstalasi) &&
             Objects.equals(thresholdInstalasi, that.thresholdInstalasi) &&
+            Objects.equals(urlEwsGis, that.urlEwsGis) &&
             Objects.equals(logId, that.logId) &&
             Objects.equals(spasId, that.spasId) &&
             Objects.equals(distinct, that.distinct)
@@ -254,7 +277,18 @@ public class SpasArrInstallCriteria implements Serializable, Criteria {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, namaInstalasi, urlInstalasi, latInstalasi, longInstalasi, thresholdInstalasi, logId, spasId, distinct);
+        return Objects.hash(
+            id,
+            namaInstalasi,
+            urlInstalasi,
+            latInstalasi,
+            longInstalasi,
+            thresholdInstalasi,
+            urlEwsGis,
+            logId,
+            spasId,
+            distinct
+        );
     }
 
     // prettier-ignore
@@ -267,6 +301,7 @@ public class SpasArrInstallCriteria implements Serializable, Criteria {
             optionalLatInstalasi().map(f -> "latInstalasi=" + f + ", ").orElse("") +
             optionalLongInstalasi().map(f -> "longInstalasi=" + f + ", ").orElse("") +
             optionalThresholdInstalasi().map(f -> "thresholdInstalasi=" + f + ", ").orElse("") +
+            optionalUrlEwsGis().map(f -> "urlEwsGis=" + f + ", ").orElse("") +
             optionalLogId().map(f -> "logId=" + f + ", ").orElse("") +
             optionalSpasId().map(f -> "spasId=" + f + ", ").orElse("") +
             optionalDistinct().map(f -> "distinct=" + f + ", ").orElse("") +

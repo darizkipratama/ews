@@ -24,6 +24,10 @@
     {
       "fieldName": "thresholdInstalasi",
       "fieldType": "Double"
+    },
+    {
+      "fieldName": "urlEwsGis",
+      "fieldType": "String"
     }
   ],
   "jpaMetamodelFiltering": true,

@@ -52,7 +52,8 @@ public class SpasArrInstallAsserts {
             .satisfies(a -> assertThat(a.getLatInstalasi()).as("check latInstalasi").isEqualTo(expected.getLatInstalasi()))
             .satisfies(a -> assertThat(a.getLongInstalasi()).as("check longInstalasi").isEqualTo(expected.getLongInstalasi()))
             .satisfies(a -> assertThat(a.getThresholdInstalasi()).as("check thresholdInstalasi").isEqualTo(expected.getThresholdInstalasi())
-            );
+            )
+            .satisfies(a -> assertThat(a.getUrlEwsGis()).as("check urlEwsGis").isEqualTo(expected.getUrlEwsGis()));
     }
 
     /**

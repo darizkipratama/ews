@@ -11,6 +11,7 @@ entity SpasArrInstall {
     latInstalasi Double
     longInstalasi Double
     thresholdInstalasi Double
+  urlEwsGis String
 }
 
 entity SpasArrLog {

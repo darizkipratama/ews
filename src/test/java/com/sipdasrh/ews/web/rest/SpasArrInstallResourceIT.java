@@ -53,6 +53,9 @@ class SpasArrInstallResourceIT {
     private static final Double UPDATED_THRESHOLD_INSTALASI = 2D;
     private static final Double SMALLER_THRESHOLD_INSTALASI = 1D - 1D;
 
+    private static final String DEFAULT_URL_EWS_GIS = "AAAAAAAAAA";
+    private static final String UPDATED_URL_EWS_GIS = "BBBBBBBBBB";
+
     private static final String ENTITY_API_URL = "/api/spas-arr-installs";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -90,7 +93,8 @@ class SpasArrInstallResourceIT {
             .urlInstalasi(DEFAULT_URL_INSTALASI)
             .latInstalasi(DEFAULT_LAT_INSTALASI)
             .longInstalasi(DEFAULT_LONG_INSTALASI)
-            .thresholdInstalasi(DEFAULT_THRESHOLD_INSTALASI);
+            .thresholdInstalasi(DEFAULT_THRESHOLD_INSTALASI)
+            .urlEwsGis(DEFAULT_URL_EWS_GIS);
     }
 
     /**
@@ -105,7 +109,8 @@ class SpasArrInstallResourceIT {
             .urlInstalasi(UPDATED_URL_INSTALASI)
             .latInstalasi(UPDATED_LAT_INSTALASI)
             .longInstalasi(UPDATED_LONG_INSTALASI)
-            .thresholdInstalasi(UPDATED_THRESHOLD_INSTALASI);
+            .thresholdInstalasi(UPDATED_THRESHOLD_INSTALASI)
+            .urlEwsGis(UPDATED_URL_EWS_GIS);
     }
 
     @BeforeEach
@@ -179,7 +184,8 @@ class SpasArrInstallResourceIT {
             .andExpect(jsonPath("$.[*].urlInstalasi").value(hasItem(DEFAULT_URL_INSTALASI)))
             .andExpect(jsonPath("$.[*].latInstalasi").value(hasItem(DEFAULT_LAT_INSTALASI)))
             .andExpect(jsonPath("$.[*].longInstalasi").value(hasItem(DEFAULT_LONG_INSTALASI)))
-            .andExpect(jsonPath("$.[*].thresholdInstalasi").value(hasItem(DEFAULT_THRESHOLD_INSTALASI)));
+            .andExpect(jsonPath("$.[*].thresholdInstalasi").value(hasItem(DEFAULT_THRESHOLD_INSTALASI)))
+            .andExpect(jsonPath("$.[*].urlEwsGis").value(hasItem(DEFAULT_URL_EWS_GIS)));
     }
 
     @Test
@@ -198,7 +204,8 @@ class SpasArrInstallResourceIT {
             .andExpect(jsonPath("$.urlInstalasi").value(DEFAULT_URL_INSTALASI))
             .andExpect(jsonPath("$.latInstalasi").value(DEFAULT_LAT_INSTALASI))
             .andExpect(jsonPath("$.longInstalasi").value(DEFAULT_LONG_INSTALASI))
-            .andExpect(jsonPath("$.thresholdInstalasi").value(DEFAULT_THRESHOLD_INSTALASI));
+            .andExpect(jsonPath("$.thresholdInstalasi").value(DEFAULT_THRESHOLD_INSTALASI))
+            .andExpect(jsonPath("$.urlEwsGis").value(DEFAULT_URL_EWS_GIS));
     }
 
     @Test
@@ -588,6 +595,62 @@ class SpasArrInstallResourceIT {
 
     @Test
     @Transactional
+    void getAllSpasArrInstallsByUrlEwsGisIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedSpasArrInstall = spasArrInstallRepository.saveAndFlush(spasArrInstall);
+
+        // Get all the spasArrInstallList where urlEwsGis equals to
+        defaultSpasArrInstallFiltering("urlEwsGis.equals=" + DEFAULT_URL_EWS_GIS, "urlEwsGis.equals=" + UPDATED_URL_EWS_GIS);
+    }
+
+    @Test
+    @Transactional
+    void getAllSpasArrInstallsByUrlEwsGisIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedSpasArrInstall = spasArrInstallRepository.saveAndFlush(spasArrInstall);
+
+        // Get all the spasArrInstallList where urlEwsGis in
+        defaultSpasArrInstallFiltering(
+            "urlEwsGis.in=" + DEFAULT_URL_EWS_GIS + "," + UPDATED_URL_EWS_GIS,
+            "urlEwsGis.in=" + UPDATED_URL_EWS_GIS
+        );
+    }
+
+    @Test
+    @Transactional
+    void getAllSpasArrInstallsByUrlEwsGisIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedSpasArrInstall = spasArrInstallRepository.saveAndFlush(spasArrInstall);
+
+        // Get all the spasArrInstallList where urlEwsGis is not null
+        defaultSpasArrInstallFiltering("urlEwsGis.specified=true", "urlEwsGis.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllSpasArrInstallsByUrlEwsGisContainsSomething() throws Exception {
+        // Initialize the database
+        insertedSpasArrInstall = spasArrInstallRepository.saveAndFlush(spasArrInstall);
+
+        // Get all the spasArrInstallList where urlEwsGis contains
+        defaultSpasArrInstallFiltering("urlEwsGis.contains=" + DEFAULT_URL_EWS_GIS, "urlEwsGis.contains=" + UPDATED_URL_EWS_GIS);
+    }
+
+    @Test
+    @Transactional
+    void getAllSpasArrInstallsByUrlEwsGisNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedSpasArrInstall = spasArrInstallRepository.saveAndFlush(spasArrInstall);
+
+        // Get all the spasArrInstallList where urlEwsGis does not contain
+        defaultSpasArrInstallFiltering(
+            "urlEwsGis.doesNotContain=" + UPDATED_URL_EWS_GIS,
+            "urlEwsGis.doesNotContain=" + DEFAULT_URL_EWS_GIS
+        );
+    }
+
+    @Test
+    @Transactional
     void getAllSpasArrInstallsBySpasIsEqualToSomething() throws Exception {
         Spas spas;
         if (TestUtil.findAll(em, Spas.class).isEmpty()) {
@@ -626,7 +689,8 @@ class SpasArrInstallResourceIT {
             .andExpect(jsonPath("$.[*].urlInstalasi").value(hasItem(DEFAULT_URL_INSTALASI)))
             .andExpect(jsonPath("$.[*].latInstalasi").value(hasItem(DEFAULT_LAT_INSTALASI)))
             .andExpect(jsonPath("$.[*].longInstalasi").value(hasItem(DEFAULT_LONG_INSTALASI)))
-            .andExpect(jsonPath("$.[*].thresholdInstalasi").value(hasItem(DEFAULT_THRESHOLD_INSTALASI)));
+            .andExpect(jsonPath("$.[*].thresholdInstalasi").value(hasItem(DEFAULT_THRESHOLD_INSTALASI)))
+            .andExpect(jsonPath("$.[*].urlEwsGis").value(hasItem(DEFAULT_URL_EWS_GIS)));
 
         // Check, that the count call also returns 1
         restSpasArrInstallMockMvc
@@ -679,7 +743,8 @@ class SpasArrInstallResourceIT {
             .urlInstalasi(UPDATED_URL_INSTALASI)
             .latInstalasi(UPDATED_LAT_INSTALASI)
             .longInstalasi(UPDATED_LONG_INSTALASI)
-            .thresholdInstalasi(UPDATED_THRESHOLD_INSTALASI);
+            .thresholdInstalasi(UPDATED_THRESHOLD_INSTALASI)
+            .urlEwsGis(UPDATED_URL_EWS_GIS);
         SpasArrInstallDTO spasArrInstallDTO = spasArrInstallMapper.toDto(updatedSpasArrInstall);
 
         restSpasArrInstallMockMvc
@@ -805,7 +870,8 @@ class SpasArrInstallResourceIT {
             .urlInstalasi(UPDATED_URL_INSTALASI)
             .latInstalasi(UPDATED_LAT_INSTALASI)
             .longInstalasi(UPDATED_LONG_INSTALASI)
-            .thresholdInstalasi(UPDATED_THRESHOLD_INSTALASI);
+            .thresholdInstalasi(UPDATED_THRESHOLD_INSTALASI)
+            .urlEwsGis(UPDATED_URL_EWS_GIS);
 
         restSpasArrInstallMockMvc
             .perform(

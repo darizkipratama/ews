@@ -52,9 +52,7 @@ public class SpasSensorServiceImpl implements SpasSensorService {
             if (mapResult.get("statusCode").equals(200)) {
                 LOG.info("Extract Data From Sensors API : {}", spasArrLog.getNamaInstalasi());
                 Map<String, Object> sensorData = (Map<String, Object>) mapResult.get("data");
-                String sensorLocation = sensorData.get("location").toString();
                 String lastSending = sensorData.get("last_sending").toString();
-
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneOffset.UTC);
                 ZonedDateTime localizedDate = ZonedDateTime.parse(lastSending, formatter);
 
@@ -67,7 +65,7 @@ public class SpasSensorServiceImpl implements SpasSensorService {
                     .timeLog(localizedDate)
                     .timeRetrieve(ZonedDateTime.now())
                     .spasArrInstall(spasArrLog);
-                newData = spasArrLogRepository.saveAndFlush(newData);
+                spasArrLogRepository.saveAndFlush(newData);
             }
         });
         LOG.info("Get Data From Sensors API : End at {}", LocalDate.now());
